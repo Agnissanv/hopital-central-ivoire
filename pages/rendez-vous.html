@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prendre Rendez-vous — Hôpital Central Ivoire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .rdv-layout {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 3rem; align-items: start;
+    }
+    @media(max-width:960px) { .rdv-layout { grid-template-columns: 1fr; } }
+    .rdv-form-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg); padding: 2.5rem;
+    }
+    .rdv-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+    .rdv-info-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); padding: 1.5rem;
+    }
+    .rdv-info-card h4 {
+      font-size: 1rem; color: var(--navy);
+      margin-bottom: 1rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .info-item {
+      display: flex; gap: 12px; margin-bottom: 0.75rem;
+      font-size: 0.85rem;
+    }
+    .info-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--blue-ghost); display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+    }
+    .info-icon svg { stroke: var(--navy); }
+    .info-item strong { display: block; font-size: 0.8rem; color: var(--navy); }
+    .info-item span { color: var(--text-muted); }
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+    .step { display: flex; gap: 12px; align-items: flex-start; }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 500; flex-shrink: 0; margin-top: 2px;
+    }
+    .step strong { display: block; font-size: 0.88rem; color: var(--navy); }
+    .step p { font-size: 0.8rem; color: var(--text-muted); }
+    .step-connector {
+      width: 1px; height: 16px; background: var(--gray-200);
+      margin-left: 14px;
+    }
+    .rdv-emergency {
+      background: #FEF2F2; border: 1px solid #FECACA;
+      border-radius: var(--radius-md); padding: 1.25rem;
+    }
+    .rdv-emergency p { font-size: 0.83rem; color: #7F1D1D; }
+    .rdv-emergency strong { display: block; color: #DC2626; font-size: 1rem; margin-bottom: 4px; }
+    .rdv-emergency a { color: #DC2626; font-weight: 600; }
+    .form-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; color: var(--navy);
+      margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .form-divider { border: none; border-top: 1px solid var(--gray-200); margin: 2rem 0; }
+    .checkbox-group { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+    .checkbox-group input[type=checkbox] { margin-top: 2px; accent-color: var(--navy); width: 16px; height: 16px; }
+    .checkbox-group label { font-size: 0.85rem; color: var(--text-muted); cursor: pointer; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+            <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Hôpital Central Ivoire</span>
+          <span class="logo-tag">Centre Hospitalier de Référence</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="medecins.html">Équipe</a></li>
+        <li><a href="urgences.html">Urgences</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="rendez-vous.html" class="btn-rdv active-rdv" style="background:var(--blue)">Prendre RDV</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="section-label">Consultation</p>
+      <h1>Prenez rendez-vous<br/><em>en quelques minutes</em></h1>
+      <p class="hero-sub">Remplissez ce formulaire et notre équipe vous confirmera votre créneau dans les 2 heures ouvrables.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="rdv-layout">
+        <!-- FORMULAIRE -->
+        <div class="rdv-form-card fade-in">
+          <h3 class="form-section-title">Informations personnelles</h3>
+          <form id="rdvForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required/>
+              </div>
+              <div class="form-group">
+                <label for="nom">Nom *</label>
+                <input type="text" id="nom" name="nom" placeholder="Votre nom" required/>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="tel">Téléphone *</label>
+                <input type="tel" id="tel" name="tel" placeholder="+225 07 00 00 00 00" required/>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="votre@email.com"/>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ddn">Date de naissance</label>
+                <input type="date" id="ddn" name="ddn"/>
+              </div>
+              <div class="form-group">
+                <label for="genre">Genre</label>
+                <select id="genre" name="genre">
+                  <option value="">Sélectionner</option>
+                  <option>Homme</option>
+                  <option>Femme</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+            </div>
+
+            <hr class="form-divider"/>
+            <h3 class="form-section-title">Consultation souhaitée</h3>
+
+            <div class="form-group">
+              <label for="specialite">Spécialité *</label>
+              <select id="specialite" name="specialite" required>
+                <option value="">Choisir une spécialité</option>
+                <option>Cardiologie</option>
+                <option>Pédiatrie</option>
+                <option>Neurologie</option>
+                <option>Oncologie</option>
+                <option>Chirurgie générale</option>
+                <option>Gynécologie-Obstétrique</option>
+                <option>Orthopédie</option>
+                <option>Ophtalmologie</option>
+                <option>Dermatologie</option>
+                <option>Pneumologie</option>
+                <option>Médecine générale</option>
+                <option>Autre</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="medecin">Médecin préféré (optionnel)</label>
+              <select id="medecin" name="medecin">
+                <option value="">Pas de préférence</option>
+                <option>Pr. Kouassi Jean-Pierre</option>
+                <option>Dr. Aminata Coulibaly</option>
+                <option>Dr. Thierry N'Goran</option>
+                <option>Pr. Marie-Claire Bédié</option>
+                <option>Dr. Diallo Fatoumata</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date_rdv">Date souhaitée *</label>
+                <input type="date" id="date_rdv" name="date_rdv" required/>
+              </div>
+              <div class="form-group">
+                <label for="heure">Créneau horaire</label>
+                <select id="heure" name="heure">
+                  <option>08h00 - 09h00</option>
+                  <option>09h00 - 10h00</option>
+                  <option>10h00 - 11h00</option>
+                  <option selected>11h00 - 12h00</option>
+                  <option>14h00 - 15h00</option>
+                  <option>15h00 - 16h00</option>
+                  <option>16h00 - 17h00</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="motif">Motif de consultation</label>
+              <textarea id="motif" name="motif" placeholder="Décrivez brièvement les symptômes ou l'objet de votre consultation..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox-group">
+                <input type="checkbox" id="accept" required/>
+                <label for="accept">J'accepte que mes données soient traitées pour la gestion de mon rendez-vous, conformément à la politique de confidentialité de l'HCI. *</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1rem">
+              Confirmer la demande de rendez-vous
+            </button>
+          </form>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="rdv-sidebar">
+          <!-- Étapes -->
+          <div class="rdv-info-card fade-in">
+            <h4>Comment ça marche ?</h4>
+            <div class="steps">
+              <div class="step">
+                <div class="step-num">1</div>
+                <div><strong>Remplissez le formulaire</strong><p>Indiquez vos informations et le type de consultation souhaité.</p></div>
+              </div>
+              <div class="step-connector"></div>
+              <div class="step">
+                <div class="step-num">2</div>
+                <div><strong>Confirmation sous 2h</strong><p>Notre équipe valide votre créneau et vous rappelle par téléphone.</p></div>
+              </div>
+              <div class="step-connector"></div>
+              <div class="step">
+                <div class="step-num">3</div>
+                <div><strong>Votre consultation</strong><p>Présentez-vous 15 min avant avec votre pièce d'identité.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Horaires -->
+          <div class="rdv-info-card fade-in">
+            <h4>Horaires de consultation</h4>
+            <div class="info-item">
+              <div class="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <div><strong>Lundi — Vendredi</strong><span>08h00 — 18h00</span></div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <div><strong>Samedi</strong><span>08h00 — 14h00</span></div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <div><strong>Dimanche</strong><span>Urgences uniquement</span></div>
+            </div>
+          </div>
+
+          <!-- Accès -->
+          <div class="rdv-info-card fade-in">
+            <h4>Nous trouver</h4>
+            <div class="info-item">
+              <div class="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></div>
+              <div><strong>Adresse</strong><span>Quartier Plateau, Boulevard de la République, Abidjan</span></div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12 19.79 19.79 0 01.1 3.38 2 2 0 012.07 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/></svg></div>
+              <div><strong>Standard</strong><span>+225 27 21 00 00 00</span></div>
+            </div>
+          </div>
+
+          <!-- Urgences -->
+          <div class="rdv-emergency fade-in">
+            <strong>⚠️ En cas d'urgence</strong>
+            <p>N'attendez pas un rendez-vous. Appelez directement ou rendez-vous au service des urgences, ouvert <strong>24h/24 - 7j/7</strong>.</p>
+            <p style="margin-top:0.5rem"><a href="urgences.html">Urgences : +225 27 21 00 00 01 →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+              <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="logo-name" style="color:#fff">Hôpital Central Ivoire</span>
+            <span class="logo-tag" style="color:rgba(255,255,255,0.5)">Centre Hospitalier de Référence</span>
+          </div>
+        </div>
+        <p class="footer-desc">Votre santé est notre priorité absolue.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="medecins.html">Équipe</a></li>
+          <li><a href="urgences.html">Urgences</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>📍 Quartier Plateau, Abidjan</li>
+          <li>📞 +225 27 21 00 00 00</li>
+          <li style="color:#5BA4D4;font-weight:500">Urgences : +225 27 21 00 00 01</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Hôpital Central Ivoire. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    document.getElementById('rdvForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      window.showToast('✅ Demande envoyée ! Nous vous confirmons votre RDV dans 2h.');
+      this.reset();
+    });
+    // Date min = aujourd'hui
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date_rdv').min = today;
+    document.getElementById('ddn').max = today;
+  </script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nos Services — Hôpital Central Ivoire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .services-full-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .srv-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); padding: 2rem;
+      transition: all var(--transition);
+      border-top: 3px solid transparent;
+    }
+    .srv-card:hover {
+      border-top-color: var(--blue);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .srv-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+    .srv-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 600;
+      color: var(--blue-pale); line-height: 1;
+      min-width: 2.5rem;
+    }
+    .srv-card h3 { font-size: 1.2rem; color: var(--navy); }
+    .srv-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+    .srv-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .srv-tag {
+      background: var(--blue-ghost); color: var(--navy);
+      padding: 3px 10px; border-radius: 100px;
+      font-size: 0.73rem;
+    }
+    .dept-filter {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .filter-btn {
+      padding: 0.5rem 1.2rem; border-radius: 100px;
+      border: 1.5px solid var(--gray-200); background: transparent;
+      font-family: 'DM Sans', sans-serif; font-size: 0.83rem;
+      color: var(--text-muted); cursor: pointer;
+      transition: all var(--transition);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--navy); color: #fff; border-color: var(--navy);
+    }
+    .urgence-highlight {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      border-radius: var(--radius-xl); padding: 3rem;
+      display: flex; align-items: center; gap: 3rem;
+      margin-bottom: 3rem; flex-wrap: wrap;
+      color: #fff;
+    }
+    .uh-text h3 { color: #fff; font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .uh-text p { color: rgba(255,255,255,0.75); max-width: 480px; }
+    .uh-nums { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .uh-num strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem; color: #fff; line-height: 1;
+    }
+    .uh-num span { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+            <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Hôpital Central Ivoire</span>
+          <span class="logo-tag">Centre Hospitalier de Référence</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="medecins.html">Équipe</a></li>
+        <li><a href="urgences.html">Urgences</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="rendez-vous.html" class="btn-rdv">Prendre RDV</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="section-label">Nos spécialités</p>
+      <h1>Soins d'exception pour<br/><em>chaque patient</em></h1>
+      <p class="hero-sub">30 spécialités médicales et chirurgicales, des consultations aux interventions complexes, avec les équipements les plus modernes d'Afrique de l'Ouest.</p>
+    </div>
+  </section>
+
+  <!-- URGENCE HIGHLIGHT -->
+  <section class="section" style="padding-bottom:0">
+    <div class="container">
+      <div class="urgence-highlight fade-in">
+        <div class="uh-text">
+          <h3>Service des Urgences 24h/24</h3>
+          <p>Notre plateau d'urgences est équipé pour répondre à toutes les situations critiques. Médecins urgentistes, infirmiers spécialisés, défibrillateurs et salles de réanimation disponibles en permanence.</p>
+          <a href="urgences.html" class="btn-white" style="margin-top:1.5rem;display:inline-block">Accéder aux urgences →</a>
+        </div>
+        <div class="uh-nums">
+          <div class="uh-num"><strong>12</strong><span>min temps d'attente moy.</span></div>
+          <div class="uh-num"><strong>24h</strong><span>disponibilité</span></div>
+          <div class="uh-num"><strong>8</strong><span>salles de soins</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES LISTE -->
+  <section class="section">
+    <div class="container">
+      <div class="dept-filter">
+        <button class="filter-btn active">Tous</button>
+        <button class="filter-btn">Médecine</button>
+        <button class="filter-btn">Chirurgie</button>
+        <button class="filter-btn">Imagerie</button>
+        <button class="filter-btn">Pédiatrie</button>
+        <button class="filter-btn">Maternité</button>
+      </div>
+      <div class="services-full-grid">
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">01</span>
+            <h3>Cardiologie</h3>
+          </div>
+          <p>Diagnostic et traitement complet des maladies cardiovasculaires. Consultations, Holter ECG, épreuve d'effort, échographie cardiaque, cathétérisme et coronarographie.</p>
+          <div class="srv-tags">
+            <span class="srv-tag">ECG Holter</span>
+            <span class="srv-tag">Écho-cardiographie</span>
+            <span class="srv-tag">Coronarographie</span>
+          </div>
+        </div>
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">02</span>
+            <h3>Neurologie</h3>
+          </div>
+          <p>Prise en charge des pathologies du système nerveux central et périphérique. AVC, épilepsie, Parkinson, sclérose en plaques, céphalées chroniques.</p>
+          <div class="srv-tags">
+            <span class="srv-tag">EEG</span>
+            <span class="srv-tag">IRM cérébrale</span>
+            <span class="srv-tag">EMG</span>
+          </div>
+        </div>
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">03</span>
+            <h3>Pédiatrie</h3>
+          </div>
+          <p>Suivi médical complet de l'enfant de la naissance à l'adolescence. Consultations de croissance, vaccinations, urgences pédiatriques et hospitalisation.</p>
+          <div class="srv-tags">
+            <span class="srv-tag">Nourrissons</span>
+            <span class="srv-tag">Urgences pédiatriques</span>
+            <span class="srv-tag">Vaccins</span>
+          </div>
+        </div>
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">04</span>
+            <h3>Oncologie</h3>
+          </div>
+          <p>Centre de lutte contre le cancer intégrant chimiothérapie, immunothérapie et accompagnement psycho-oncologique pour patients et familles.</p>
+          <div class="srv-tags">
+            <span class="srv-tag">Chimiothérapie</span>
+            <span class="srv-tag">Immunothérapie</span>
+            <span class="srv-tag">Accompagnement</span>
+          </div>
+        </div>
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">05</span>
+            <h3>Chirurgie Générale</h3>
+          </div>
+          <p>Interventions laparoscopiques et en chirurgie ouverte. Ablation vésicule biliaire, appendicite, hernies, chirurgie digestive et colorectale.</p>
+          <div class="srv-tags">
+            <span class="srv-tag">Laparoscopie</span>
+            <span class="srv-tag">Chirurgie digestive</span>
+            <span class="srv-tag">Robot Da Vinci</span>
+          </div>
+        </div>
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">06</span>
+            <h3>Gynécologie-Obstétrique</h3>
+          </div>
+          <p>Suivi de grossesse, accouchement, chirurgie gynécologique et planification familiale. Maternité équipée niveau III avec unité néonatale.</p>
+          <div class="srv-tags">
+            <span class="srv-tag">Maternité niveau III</span>
+            <span class="srv-tag">Néonatologie</span>
+            <span class="srv-tag">Écho obstétricale</span>
+          </div>
+        </div>
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">07</span>
+            <h3>Orthopédie</h3>
+          </div>
+          <p>Chirurgie osseuse et articulaire, prothèses totales de hanche et genou, arthroscopie, traumatologie sportive et rééducation postopératoire.</p>
+          <div class="srv-tags">
+            <span class="srv-tag">Prothèses</span>
+            <span class="srv-tag">Arthroscopie</span>
+            <span class="srv-tag">Traumatologie</span>
+          </div>
+        </div>
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">08</span>
+            <h3>Ophtalmologie</h3>
+          </div>
+          <p>Consultations de vue, chirurgie de la cataracte, correction laser LASIK, glaucome et maladies rétiniennes. Équipements de microchirurgie de précision.</p>
+          <div class="srv-tags">
+            <span class="srv-tag">LASIK</span>
+            <span class="srv-tag">Cataracte</span>
+            <span class="srv-tag">Glaucome</span>
+          </div>
+        </div>
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">09</span>
+            <h3>Radiologie & Imagerie</h3>
+          </div>
+          <p>Plateforme d'imagerie complète : IRM 3 Tesla, scanner 128 coupes, radiographie numérique, mammographie 3D et échographie Doppler.</p>
+          <div class="srv-tags">
+            <span class="srv-tag">IRM 3 Tesla</span>
+            <span class="srv-tag">Scanner 128 coupes</span>
+            <span class="srv-tag">Mammographie 3D</span>
+          </div>
+        </div>
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">10</span>
+            <h3>Pneumologie</h3>
+          </div>
+          <p>Diagnostic et traitement des maladies respiratoires : asthme, BPCO, tuberculose, pneumonies, bronchoscopie et explorations fonctionnelles.</p>
+          <div class="srv-tags">
+            <span class="srv-tag">Spirométrie</span>
+            <span class="srv-tag">Bronchoscopie</span>
+            <span class="srv-tag">Sommeil</span>
+          </div>
+        </div>
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">11</span>
+            <h3>Dermatologie</h3>
+          </div>
+          <p>Consultations et traitements des affections cutanées, maladies tropicales dermatologiques, dermatologie esthétique et chirurgie cutanée.</p>
+          <div class="srv-tags">
+            <span class="srv-tag">Dermoscopie</span>
+            <span class="srv-tag">Laser</span>
+            <span class="srv-tag">Chirurgie cutanée</span>
+          </div>
+        </div>
+        <div class="srv-card fade-in">
+          <div class="srv-card-header">
+            <span class="srv-num">12</span>
+            <h3>Laboratoire d'Analyses</h3>
+          </div>
+          <p>Laboratoire certifié ISO 15189. Analyses biologiques courantes et spécialisées, microbiologie, sérologies et biologie moléculaire (PCR).</p>
+          <div class="srv-tags">
+            <span class="srv-tag">ISO 15189</span>
+            <span class="srv-tag">PCR</span>
+            <span class="srv-tag">Résultats en ligne</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <p class="section-label light">Consultation</p>
+        <h2>Besoin d'une<br/><em>consultation spécialisée ?</em></h2>
+        <p>Nos équipes vous orientent vers le bon spécialiste. Prise en charge rapide, diagnostic précis.</p>
+        <div class="cta-actions">
+          <a href="rendez-vous.html" class="btn-white">Prendre rendez-vous →</a>
+          <a href="tel:+2252721000000" class="btn-ghost-white">Nous appeler</a>
+        </div>
+      </div>
+      <div class="cta-visual">
+        <div class="cta-card">
+          <p class="cta-card-title">Spécialités disponibles</p>
+          <div class="cta-slots">
+            <div class="slot slot--active">Cardio<br/><strong>Dispo.</strong></div>
+            <div class="slot">Pédia.<br/><strong>Dispo.</strong></div>
+            <div class="slot">Neuro<br/><strong>Dispo.</strong></div>
+          </div>
+          <a href="rendez-vous.html" class="btn-primary" style="width:100%;text-align:center;margin-top:1rem;">Choisir une spécialité</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+              <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="logo-name" style="color:#fff">Hôpital Central Ivoire</span>
+            <span class="logo-tag" style="color:rgba(255,255,255,0.5)">Centre Hospitalier de Référence</span>
+          </div>
+        </div>
+        <p class="footer-desc">Votre santé est notre priorité absolue. Soins d'excellence dans un environnement bienveillant.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">Cardiologie</a></li>
+          <li><a href="services.html">Pédiatrie</a></li>
+          <li><a href="services.html">Neurologie</a></li>
+          <li><a href="services.html">Oncologie</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Hôpital</h5>
+        <ul>
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="medecins.html">Notre équipe</a></li>
+          <li><a href="urgences.html">Urgences</a></li>
+          <li><a href="rendez-vous.html">Rendez-vous</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>📍 Quartier Plateau, Abidjan</li>
+          <li>📞 +225 27 21 00 00 00</li>
+          <li>✉️ contact@hci-abidjan.ci</li>
+          <li style="margin-top:1rem;color:#5BA4D4;font-weight:500">Urgences : +225 27 21 00 00 01</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Hôpital Central Ivoire. Tous droits réservés.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Filtre services
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

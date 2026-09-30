@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notre Équipe — Hôpital Central Ivoire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .team-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); overflow: hidden;
+      transition: all var(--transition);
+    }
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .team-card-img {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--blue-ghost), var(--gray-100));
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .team-card-img::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+      background: linear-gradient(transparent, rgba(10,58,107,0.15));
+    }
+    .team-initials {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 600;
+      color: var(--navy); opacity: 0.3;
+    }
+    .team-spec-badge {
+      position: absolute; bottom: 12px; left: 12px; z-index: 2;
+      background: var(--navy); color: #fff;
+      padding: 4px 12px; border-radius: 100px;
+      font-size: 0.72rem;
+    }
+    .team-card-body { padding: 1.25rem; }
+    .team-card-body h4 { font-size: 1.1rem; color: var(--navy); margin-bottom: 4px; }
+    .team-card-body .doc-title { font-size: 0.8rem; color: var(--blue); font-weight: 500; margin-bottom: 8px; }
+    .team-card-body p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
+    .team-card-footer {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid var(--gray-200);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .team-meta { font-size: 0.78rem; color: var(--text-muted); }
+    .team-meta strong { color: var(--navy); }
+    .rdv-mini {
+      font-size: 0.78rem; color: var(--blue); font-weight: 500;
+      border-bottom: 1px solid var(--blue-pale);
+      transition: border-color var(--transition);
+    }
+    .rdv-mini:hover { border-color: var(--blue); }
+    .dept-section { margin-bottom: 4rem; }
+    .dept-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; color: var(--navy);
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--blue-pale);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .dept-count {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem; color: var(--blue); background: var(--blue-ghost);
+      padding: 3px 10px; border-radius: 100px; font-weight: 500;
+    }
+    .search-bar {
+      display: flex; gap: 1rem; margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .search-bar input {
+      flex: 1; min-width: 200px; padding: 0.85rem 1.25rem;
+      border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      color: var(--text-main); outline: none;
+      transition: border-color var(--transition);
+    }
+    .search-bar input:focus { border-color: var(--blue); }
+    .search-bar select {
+      padding: 0.85rem 1.25rem; border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-sm); font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; color: var(--text-main); background: var(--white);
+      outline: none; cursor: pointer; transition: border-color var(--transition);
+    }
+    .search-bar select:focus { border-color: var(--blue); }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+            <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Hôpital Central Ivoire</span>
+          <span class="logo-tag">Centre Hospitalier de Référence</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="medecins.html" class="active">Équipe</a></li>
+        <li><a href="urgences.html">Urgences</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="rendez-vous.html" class="btn-rdv">Prendre RDV</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="section-label">Notre équipe médicale</p>
+      <h1>200 professionnels<br/><em>à votre service</em></h1>
+      <p class="hero-sub">Des médecins formés dans les meilleures universités d'Europe, d'Amérique et d'Afrique, engagés pour votre santé avec bienveillance et expertise.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="search-bar">
+        <input type="text" placeholder="Rechercher un médecin par nom..."/>
+        <select>
+          <option>Toutes les spécialités</option>
+          <option>Cardiologie</option>
+          <option>Pédiatrie</option>
+          <option>Neurologie</option>
+          <option>Oncologie</option>
+          <option>Chirurgie</option>
+          <option>Gynécologie</option>
+          <option>Orthopédie</option>
+        </select>
+      </div>
+
+      <!-- CARDIOLOGIE -->
+      <div class="dept-section fade-in">
+        <div class="dept-title">Cardiologie <span class="dept-count">4 médecins</span></div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-card-img">
+              <span class="team-initials">KJP</span>
+              <span class="team-spec-badge">Professeur</span>
+            </div>
+            <div class="team-card-body">
+              <h4>Pr. Kouassi Jean-Pierre</h4>
+              <p class="doc-title">Chef de service — Cardiologie</p>
+              <p>Spécialiste des cardiopathies congénitales et de l'insuffisance cardiaque. Formé à Paris (Pitié-Salpêtrière) et Toronto.</p>
+            </div>
+            <div class="team-card-footer">
+              <div class="team-meta"><strong>22 ans</strong> d'expérience</div>
+              <a href="rendez-vous.html" class="rdv-mini">Prendre RDV →</a>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-card-img">
+              <span class="team-initials">DF</span>
+              <span class="team-spec-badge">Docteur</span>
+            </div>
+            <div class="team-card-body">
+              <h4>Dr. Diallo Fatoumata</h4>
+              <p class="doc-title">Cardiologue interventionniste</p>
+              <p>Spécialiste de la coronarographie et de l'angioplastie. Parcours à Bordeaux et New York-Presbyterian.</p>
+            </div>
+            <div class="team-card-footer">
+              <div class="team-meta"><strong>14 ans</strong> d'expérience</div>
+              <a href="rendez-vous.html" class="rdv-mini">Prendre RDV →</a>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-card-img">
+              <span class="team-initials">TAS</span>
+              <span class="team-spec-badge">Docteur</span>
+            </div>
+            <div class="team-card-body">
+              <h4>Dr. Touré Abdou Saïd</h4>
+              <p class="doc-title">Rythmologue</p>
+              <p>Pose de pacemakers, ablation des troubles du rythme, suivi des porteurs de défibrillateurs cardiaques implantables.</p>
+            </div>
+            <div class="team-card-footer">
+              <div class="team-meta"><strong>11 ans</strong> d'expérience</div>
+              <a href="rendez-vous.html" class="rdv-mini">Prendre RDV →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PÉDIATRIE -->
+      <div class="dept-section fade-in">
+        <div class="dept-title">Pédiatrie <span class="dept-count">3 médecins</span></div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-card-img" style="background:linear-gradient(135deg,#F0F7EE,#E0EFDA)">
+              <span class="team-initials">AC</span>
+              <span class="team-spec-badge">Docteur</span>
+            </div>
+            <div class="team-card-body">
+              <h4>Dr. Aminata Coulibaly</h4>
+              <p class="doc-title">Pédiatre — Responsable urgences</p>
+              <p>Spécialiste de la pédiatrie d'urgence et des maladies infectieuses tropicales chez l'enfant. Formée à Lyon et Dakar.</p>
+            </div>
+            <div class="team-card-footer">
+              <div class="team-meta"><strong>15 ans</strong> d'expérience</div>
+              <a href="rendez-vous.html" class="rdv-mini">Prendre RDV →</a>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-card-img" style="background:linear-gradient(135deg,#F0F7EE,#E0EFDA)">
+              <span class="team-initials">BY</span>
+              <span class="team-spec-badge">Docteur</span>
+            </div>
+            <div class="team-card-body">
+              <h4>Dr. Bamba Yacouba</h4>
+              <p class="doc-title">Néonatologue</p>
+              <p>Prise en charge du nouveau-né prématuré et des pathologies néonatales complexes. Réanimation néonatale avancée.</p>
+            </div>
+            <div class="team-card-footer">
+              <div class="team-meta"><strong>9 ans</strong> d'expérience</div>
+              <a href="rendez-vous.html" class="rdv-mini">Prendre RDV →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEUROLOGIE -->
+      <div class="dept-section fade-in">
+        <div class="dept-title">Neurologie <span class="dept-count">3 médecins</span></div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-card-img" style="background:linear-gradient(135deg,#FEF6E4,#FAE5B0)">
+              <span class="team-initials">TN</span>
+              <span class="team-spec-badge">Docteur</span>
+            </div>
+            <div class="team-card-body">
+              <h4>Dr. Thierry N'Goran</h4>
+              <p class="doc-title">Neurologue — Chef de service</p>
+              <p>Spécialiste des AVC et des épilepsies réfractaires. Coordinateur de l'Unité Neurovasculaire de l'HCI.</p>
+            </div>
+            <div class="team-card-footer">
+              <div class="team-meta"><strong>18 ans</strong> d'expérience</div>
+              <a href="rendez-vous.html" class="rdv-mini">Prendre RDV →</a>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-card-img" style="background:linear-gradient(135deg,#FEF6E4,#FAE5B0)">
+              <span class="team-initials">SK</span>
+              <span class="team-spec-badge">Docteur</span>
+            </div>
+            <div class="team-card-body">
+              <h4>Dr. Soro Koffi</h4>
+              <p class="doc-title">Neuropsychiatre</p>
+              <p>Troubles cognitifs, démences, maladie d'Alzheimer et Parkinson. Clinique des céphalées chroniques.</p>
+            </div>
+            <div class="team-card-footer">
+              <div class="team-meta"><strong>12 ans</strong> d'expérience</div>
+              <a href="rendez-vous.html" class="rdv-mini">Prendre RDV →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ONCOLOGIE -->
+      <div class="dept-section fade-in">
+        <div class="dept-title">Oncologie <span class="dept-count">2 médecins</span></div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-card-img" style="background:linear-gradient(135deg,#F5EBF5,#E8D0E8)">
+              <span class="team-initials">MCB</span>
+              <span class="team-spec-badge">Professeur</span>
+            </div>
+            <div class="team-card-body">
+              <h4>Pr. Marie-Claire Bédié</h4>
+              <p class="doc-title">Directrice — Centre Oncologique</p>
+              <p>Pionnière de l'oncologie en Côte d'Ivoire. Formée à l'Institut Curie (Paris) et MD Anderson (Houston). 25 ans de pratique.</p>
+            </div>
+            <div class="team-card-footer">
+              <div class="team-meta"><strong>25 ans</strong> d'expérience</div>
+              <a href="rendez-vous.html" class="rdv-mini">Prendre RDV →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REJOINDRE L'ÉQUIPE -->
+  <section class="section" style="background:var(--off-white)">
+    <div class="container" style="text-align:center">
+      <p class="section-label">Carrières</p>
+      <h2 class="section-title">Rejoignez l'équipe<br/><em>HCI</em></h2>
+      <p style="color:var(--text-muted);max-width:480px;margin:0 auto 2rem">Nous recrutons des professionnels de santé passionnés. Envoyez votre candidature et rejoignez un hôpital en pleine croissance.</p>
+      <a href="contact.html" class="btn-primary">Candidature spontanée →</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+              <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="logo-name" style="color:#fff">Hôpital Central Ivoire</span>
+            <span class="logo-tag" style="color:rgba(255,255,255,0.5)">Centre Hospitalier de Référence</span>
+          </div>
+        </div>
+        <p class="footer-desc">Votre santé est notre priorité absolue.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">Toutes les spécialités</a></li>
+          <li><a href="urgences.html">Urgences</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Hôpital</h5>
+        <ul>
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="rendez-vous.html">Rendez-vous</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>📍 Quartier Plateau, Abidjan</li>
+          <li>📞 +225 27 21 00 00 00</li>
+          <li style="color:#5BA4D4;font-weight:500;margin-top:.5rem">Urgences : +225 27 21 00 00 01</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Hôpital Central Ivoire. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

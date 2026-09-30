@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Hôpital Central Ivoire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 3rem; align-items: start;
+    }
+    @media(max-width:960px) { .contact-layout { grid-template-columns: 1fr; } }
+    .contact-form-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg); padding: 2.5rem;
+    }
+    .contact-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-info-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); padding: 1.75rem;
+    }
+    .contact-info-card h4 {
+      font-size: 1rem; color: var(--navy);
+      margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .contact-row {
+      display: flex; gap: 14px; align-items: flex-start;
+      margin-bottom: 1.1rem;
+    }
+    .contact-row:last-child { margin-bottom: 0; }
+    .c-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--blue-ghost); border: 1px solid var(--blue-pale);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .c-icon svg { stroke: var(--navy); }
+    .c-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2px; }
+    .c-val { font-size: 0.9rem; color: var(--navy); font-weight: 500; }
+    .c-val a { color: var(--navy); transition: color var(--transition); }
+    .c-val a:hover { color: var(--blue); }
+    .dept-contacts { display: flex; flex-direction: column; gap: 0.75rem; }
+    .dept-contact {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.75rem; background: var(--off-white);
+      border-radius: var(--radius-sm); font-size: 0.83rem;
+    }
+    .dept-contact span { color: var(--text-muted); }
+    .dept-contact strong { color: var(--navy); }
+    .dept-contact a { color: var(--blue); font-weight: 500; }
+    .map-embed {
+      aspect-ratio: 16/8; border-radius: var(--radius-md);
+      background: var(--blue-ghost); border: 1px solid var(--gray-200);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.75rem;
+      color: var(--text-muted); font-size: 0.85rem;
+    }
+    .map-embed svg { stroke: var(--blue-light); }
+    .subject-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .chip {
+      padding: 6px 14px; border-radius: 100px;
+      border: 1.5px solid var(--gray-200); background: transparent;
+      font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+      color: var(--text-muted); cursor: pointer;
+      transition: all var(--transition);
+    }
+    .chip.selected, .chip:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .form-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; color: var(--navy);
+      margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .recrutement-banner {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-radius: var(--radius-md); padding: 1.5rem;
+      color: #fff;
+    }
+    .recrutement-banner h4 { color: #fff; margin-bottom: 0.5rem; }
+    .recrutement-banner p { font-size: 0.83rem; color: rgba(255,255,255,0.75); margin-bottom: 1rem; }
+    .recrutement-banner a {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3); color: #fff;
+      padding: 0.5rem 1.2rem; border-radius: var(--radius-sm);
+      font-size: 0.83rem; transition: background var(--transition);
+    }
+    .recrutement-banner a:hover { background: rgba(255,255,255,0.25); }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+            <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Hôpital Central Ivoire</span>
+          <span class="logo-tag">Centre Hospitalier de Référence</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="medecins.html">Équipe</a></li>
+        <li><a href="urgences.html">Urgences</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <a href="rendez-vous.html" class="btn-rdv">Prendre RDV</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="section-label">Nous contacter</p>
+      <h1>Nous sommes<br/><em>à votre écoute</em></h1>
+      <p class="hero-sub">Une question, une réclamation, un partenariat ou une candidature ? Contactez-nous et nous vous répondrons dans les 24 heures.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+        <!-- FORMULAIRE -->
+        <div class="contact-form-card fade-in">
+          <h3 class="form-section-title">Envoyer un message</h3>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem">Choisissez le sujet de votre demande :</p>
+          <div class="subject-chips">
+            <button class="chip selected" type="button">Renseignement</button>
+            <button class="chip" type="button">Rendez-vous</button>
+            <button class="chip" type="button">Résultats</button>
+            <button class="chip" type="button">Réclamation</button>
+            <button class="chip" type="button">Partenariat</button>
+            <button class="chip" type="button">Recrutement</button>
+          </div>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" placeholder="Votre prénom" required/>
+              </div>
+              <div class="form-group">
+                <label for="nom">Nom *</label>
+                <input type="text" id="nom" placeholder="Votre nom" required/>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" placeholder="votre@email.com" required/>
+              </div>
+              <div class="form-group">
+                <label for="tel">Téléphone</label>
+                <input type="tel" id="tel" placeholder="+225 07 00 00 00 00"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="objet">Objet *</label>
+              <input type="text" id="objet" placeholder="Résumez l'objet de votre demande" required/>
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" placeholder="Décrivez votre demande en détail..." required></textarea>
+            </div>
+            <div class="form-group">
+              <div style="display:flex;align-items:flex-start;gap:10px">
+                <input type="checkbox" id="accept" required style="margin-top:3px;accent-color:var(--navy);width:16px;height:16px;"/>
+                <label for="accept" style="font-size:0.83rem;color:var(--text-muted);cursor:pointer">J'accepte que mes données soient traitées pour le traitement de ma demande, conformément à la politique de confidentialité de l'HCI.</label>
+              </div>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1rem">
+              Envoyer le message →
+            </button>
+          </form>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="contact-sidebar">
+          <!-- Coordonnées principales -->
+          <div class="contact-info-card fade-in">
+            <h4>Coordonnées générales</h4>
+            <div class="contact-row">
+              <div class="c-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></div>
+              <div>
+                <p class="c-label">Adresse</p>
+                <p class="c-val">Boulevard de la République<br/>Quartier Plateau, Abidjan</p>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="c-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12 19.79 19.79 0 01.1 3.38 2 2 0 012.07 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/></svg></div>
+              <div>
+                <p class="c-label">Standard</p>
+                <p class="c-val"><a href="tel:+2252721000000">+225 27 21 00 00 00</a></p>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="c-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5"/></svg></div>
+              <div>
+                <p class="c-label">Email</p>
+                <p class="c-val"><a href="mailto:contact@hci-abidjan.ci">contact@hci-abidjan.ci</a></p>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="c-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <div>
+                <p class="c-label">Horaires administratifs</p>
+                <p class="c-val">Lun–Ven : 08h00 – 17h00<br/>Samedi : 08h00 – 13h00</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contacts par département -->
+          <div class="contact-info-card fade-in">
+            <h4>Contacts directs par service</h4>
+            <div class="dept-contacts">
+              <div class="dept-contact">
+                <div><strong>Urgences</strong><br/><span>24h/24</span></div>
+                <a href="tel:+2252721000001">27 21 00 00 01</a>
+              </div>
+              <div class="dept-contact">
+                <div><strong>Cardiologie</strong><br/><span>Lun–Ven 08h–17h</span></div>
+                <a href="tel:+2252721000002">27 21 00 00 02</a>
+              </div>
+              <div class="dept-contact">
+                <div><strong>Pédiatrie</strong><br/><span>Lun–Sam 07h–19h</span></div>
+                <a href="tel:+2252721000003">27 21 00 00 03</a>
+              </div>
+              <div class="dept-contact">
+                <div><strong>Maternité</strong><br/><span>24h/24</span></div>
+                <a href="tel:+2252721000004">27 21 00 00 04</a>
+              </div>
+              <div class="dept-contact">
+                <div><strong>Laboratoire</strong><br/><span>Lun–Sam 07h–18h</span></div>
+                <a href="tel:+2252721000005">27 21 00 00 05</a>
+              </div>
+              <div class="dept-contact">
+                <div><strong>Direction</strong><br/><span>Lun–Ven 09h–16h</span></div>
+                <a href="mailto:direction@hci-abidjan.ci">Par email</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recrutement -->
+          <div class="recrutement-banner fade-in">
+            <h4>Vous êtes professionnel de santé ?</h4>
+            <p>Rejoignez une équipe d'excellence. Nous recrutons médecins, infirmiers et personnel administratif tout au long de l'année.</p>
+            <a href="mailto:rh@hci-abidjan.ci">Envoyer votre CV →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAP -->
+      <div class="map-embed fade-in" style="margin-top:3rem">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke-width="1.5"/></svg>
+        <span>Hôpital Central Ivoire — Quartier Plateau, Abidjan</span>
+        <span style="font-size:0.78rem;color:var(--gray-400)">Intégrer ici l'iframe Google Maps : Boulevard de la République, Plateau, Abidjan</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+              <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="logo-name" style="color:#fff">Hôpital Central Ivoire</span>
+            <span class="logo-tag" style="color:rgba(255,255,255,0.5)">Centre Hospitalier de Référence</span>
+          </div>
+        </div>
+        <p class="footer-desc">Votre santé est notre priorité absolue. Soins d'excellence, équipe bienveillante.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">Toutes les spécialités</a></li>
+          <li><a href="urgences.html">Urgences 24h/24</a></li>
+          <li><a href="rendez-vous.html">Prendre RDV</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Hôpital</h5>
+        <ul>
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="medecins.html">Notre équipe</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>📍 Quartier Plateau, Abidjan</li>
+          <li>📞 +225 27 21 00 00 00</li>
+          <li>✉️ contact@hci-abidjan.ci</li>
+          <li style="color:#5BA4D4;font-weight:500;margin-top:.5rem">Urgences : +225 27 21 00 00 01</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Hôpital Central Ivoire. Tous droits réservés.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Chips sujet
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', function() {
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+    // Form submit
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      window.showToast('✅ Message envoyé ! Nous vous répondrons sous 24h.');
+      this.reset();
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+      document.querySelector('.chip').classList.add('selected');
+    });
+  </script>
+</body>
+</html>

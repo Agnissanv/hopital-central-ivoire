@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Urgences — Hôpital Central Ivoire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .urg-hero {
+      background: linear-gradient(135deg, #7F1D1D 0%, #DC2626 100%);
+      padding: 120px 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .urg-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .urg-hero-inner { max-width: 1280px; margin: 0 auto; position: relative; }
+    .urg-hero p.section-label { color: rgba(255,255,255,0.6); }
+    .urg-hero h1 { color: #fff; }
+    .urg-hero p.hero-sub { color: rgba(255,255,255,0.75); max-width: 520px; }
+    .urg-phone-big {
+      display: inline-flex; align-items: center; gap: 1rem;
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: var(--radius-md); padding: 1rem 1.5rem;
+      margin-top: 2rem; color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: background var(--transition);
+    }
+    .urg-phone-big:hover { background: rgba(255,255,255,0.25); }
+    .urg-phone-big svg { stroke: #fff; flex-shrink: 0; }
+    .urg-phone-sub { color: rgba(255,255,255,0.6); font-size: 0.85rem; font-family: 'DM Sans', sans-serif; }
+    .live-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 16px; border-radius: 100px;
+      font-size: 0.8rem; color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+    }
+    .live-dot { width: 8px; height: 8px; background: #4ADE80; border-radius: 50%; animation: pulse 2s infinite; }
+    .urg-stats-row {
+      display: flex; gap: 0; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin-top: 2.5rem; padding-top: 2rem;
+    }
+    .urg-stat { padding: 0 2rem; border-right: 1px solid rgba(255,255,255,0.15); }
+    .urg-stat:first-child { padding-left: 0; }
+    .urg-stat:last-child { border-right: none; }
+    .urg-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: #fff; line-height: 1; }
+    .urg-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 2px; }
+
+    .urg-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem; margin-bottom: 3rem;
+    }
+    .urg-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); padding: 1.75rem;
+      border-left: 4px solid transparent;
+    }
+    .urg-card--red { border-left-color: #DC2626; }
+    .urg-card--orange { border-left-color: #F97316; }
+    .urg-card--yellow { border-left-color: #EAB308; }
+    .urg-card--green { border-left-color: #22C55E; }
+    .urg-card h4 { font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; }
+    .urg-card p { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+    .urg-card-badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 500;
+      padding: 3px 10px; border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+    .badge-red { background: #FEE2E2; color: #991B1B; }
+    .badge-orange { background: #FFEDD5; color: #9A3412; }
+    .badge-yellow { background: #FEF9C3; color: #713F12; }
+    .badge-green { background: #DCFCE7; color: #14532D; }
+    .acces-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media(max-width:640px) { .acces-grid { grid-template-columns: 1fr; } }
+    .acces-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); padding: 2rem;
+    }
+    .acces-card h4 { font-size: 1rem; color: var(--navy); margin-bottom: 1rem; }
+    .acces-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .acces-item { display: flex; gap: 10px; align-items: flex-start; font-size: 0.85rem; color: var(--text-muted); }
+    .acces-item strong { color: var(--navy); }
+    .map-placeholder {
+      aspect-ratio: 16/7; border-radius: var(--radius-md);
+      background: var(--blue-ghost); border: 1px solid var(--gray-200);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem;
+      color: var(--text-muted); font-size: 0.9rem;
+      margin-bottom: 3rem;
+    }
+    .map-placeholder svg { stroke: var(--blue-light); }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+            <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Hôpital Central Ivoire</span>
+          <span class="logo-tag">Centre Hospitalier de Référence</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="medecins.html">Équipe</a></li>
+        <li><a href="urgences.html" class="active">Urgences</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="rendez-vous.html" class="btn-rdv">Prendre RDV</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO URGENCES -->
+  <section class="urg-hero">
+    <div class="urg-hero-inner">
+      <div class="live-badge"><span class="live-dot"></span> Urgences ouvertes — 24h/24</div>
+      <h1>Service des<br/><em style="color:rgba(255,255,255,0.8)">Urgences</em></h1>
+      <p class="hero-sub" style="margin-top:1rem">En cas d'urgence médicale, ne perdez pas de temps. Appelez immédiatement ou présentez-vous directement à l'entrée des urgences.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-top:1.5rem">
+        <a href="tel:+2252721000001" class="urg-phone-big">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12 19.79 19.79 0 01.1 3.38 2 2 0 012.07 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/></svg>
+          <div>
+            +225 27 21 00 00 01
+            <div class="urg-phone-sub">Appel gratuit — Urgences directes</div>
+          </div>
+        </a>
+      </div>
+      <div class="urg-stats-row">
+        <div class="urg-stat"><div class="urg-stat-num">24h</div><div class="urg-stat-label">Disponibilité</div></div>
+        <div class="urg-stat"><div class="urg-stat-num">12min</div><div class="urg-stat-label">Temps d'attente moy.</div></div>
+        <div class="urg-stat"><div class="urg-stat-num">8</div><div class="urg-stat-label">Salles de soins</div></div>
+        <div class="urg-stat"><div class="urg-stat-num">2</div><div class="urg-stat-label">Salles de réanimation</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Triage</p>
+        <h2 class="section-title">Niveaux de<br/><em>prise en charge</em></h2>
+        <p class="section-desc">À votre arrivée, une infirmière trieur évalue votre situation et vous oriente vers le niveau de soins approprié.</p>
+      </div>
+
+      <div class="urg-cards">
+        <div class="urg-card urg-card--red fade-in">
+          <span class="urg-card-badge badge-red">Niveau 1 — Immédiat</span>
+          <h4>Urgence vitale</h4>
+          <p>Arrêt cardiaque, difficultés respiratoires sévères, perte de connaissance, AVC, hémorragie massive. Prise en charge immédiate, sans attente.</p>
+        </div>
+        <div class="urg-card urg-card--orange fade-in">
+          <span class="urg-card-badge badge-orange">Niveau 2 — Très urgent</span>
+          <h4>Urgence haute priorité</h4>
+          <p>Douleurs thoraciques, fractures complexes, traumatismes crâniens, douleurs abdominales intenses. Prise en charge sous 15 minutes.</p>
+        </div>
+        <div class="urg-card urg-card--yellow fade-in">
+          <span class="urg-card-badge badge-yellow">Niveau 3 — Urgent</span>
+          <h4>Urgence modérée</h4>
+          <p>Fièvre élevée, plaies nécessitant des points, douleurs osseuses, vomissements persistants, déshydratation. Délai : 30 à 60 minutes.</p>
+        </div>
+        <div class="urg-card urg-card--green fade-in">
+          <span class="urg-card-badge badge-green">Niveau 4 — Semi-urgent</span>
+          <h4>Soins non urgents</h4>
+          <p>Maux de gorge, douleurs légères, petites blessures, renouvellement d'ordonnance. Orienté vers consultation si possible. Délai : 1 à 2h.</p>
+        </div>
+      </div>
+
+      <!-- CE QU'IL FAUT APPORTER -->
+      <div class="section-header" style="margin-top:2rem">
+        <p class="section-label">Préparation</p>
+        <h2 class="section-title">À apporter<br/><em>aux urgences</em></h2>
+      </div>
+      <div class="acces-grid">
+        <div class="acces-card fade-in">
+          <h4>Documents à avoir sur soi</h4>
+          <div class="acces-list">
+            <div class="acces-item">✅ <span>Carte nationale d'identité ou passeport</span></div>
+            <div class="acces-item">✅ <span>Carnet de santé ou dossier médical si disponible</span></div>
+            <div class="acces-item">✅ <span>Ordonnances et liste des médicaments en cours</span></div>
+            <div class="acces-item">✅ <span>Carte d'assurance maladie ou mutuelle</span></div>
+            <div class="acces-item">✅ <span>Numéro d'un proche à prévenir</span></div>
+          </div>
+        </div>
+        <div class="acces-card fade-in">
+          <h4>Accès et stationnement</h4>
+          <div class="acces-list">
+            <div class="acces-item">📍 <div><strong>Entrée urgences</strong><span> Côté Boulevard de la République (accès dédié, distinct de l'entrée principale)</span></div></div>
+            <div class="acces-item">🚗 <div><strong>Parking gratuit</strong><span> 24h/24 pour les accompagnants</span></div></div>
+            <div class="acces-item">🚌 <div><strong>Transports en commun</strong><span> Gbaka ligne 7 — arrêt Hôpital</span></div></div>
+            <div class="acces-item">🚑 <div><strong>SAMU</strong><span> Voie d'accès ambulance séparée, priorité de passage</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAP PLACEHOLDER -->
+      <div class="map-placeholder fade-in">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke-width="1.5"/></svg>
+        Hôpital Central Ivoire — Quartier Plateau, Abidjan<br/>
+        <span style="font-size:0.8rem">(Carte Google Maps à intégrer via iframe)</span>
+      </div>
+
+      <!-- ÉQUIPE DE GARDE -->
+      <div class="section-header">
+        <p class="section-label">Équipe</p>
+        <h2 class="section-title">Médecins de<br/><em>garde ce soir</em></h2>
+      </div>
+      <div class="doctors-grid">
+        <div class="doctor-card fade-in">
+          <div class="doc-avatar" style="background:#FEE2E2">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#DC2626" stroke-width="1.5"/><path d="M6 20v-2a6 6 0 0112 0v2" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="doc-info">
+            <h4>Dr. Konaté Ibrahim</h4>
+            <p class="doc-spec">Médecin urgentiste</p>
+            <p class="doc-exp" style="color:#DC2626">En service — 24h</p>
+          </div>
+        </div>
+        <div class="doctor-card fade-in">
+          <div class="doc-avatar" style="background:#FEE2E2">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#DC2626" stroke-width="1.5"/><path d="M6 20v-2a6 6 0 0112 0v2" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="doc-info">
+            <h4>Dr. Ouattara Mariam</h4>
+            <p class="doc-spec">Anesthésiste-Réanimateur</p>
+            <p class="doc-exp" style="color:#DC2626">En service — 24h</p>
+          </div>
+        </div>
+        <div class="doctor-card fade-in">
+          <div class="doc-avatar" style="background:#FEE2E2">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#DC2626" stroke-width="1.5"/><path d="M6 20v-2a6 6 0 0112 0v2" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="doc-info">
+            <h4>Dr. Yao Franck</h4>
+            <p class="doc-spec">Chirurgien de garde</p>
+            <p class="doc-exp" style="color:#DC2626">Astreinte — rappel</p>
+          </div>
+        </div>
+        <div class="doctor-card fade-in">
+          <div class="doc-avatar" style="background:#FEE2E2">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#DC2626" stroke-width="1.5"/><path d="M6 20v-2a6 6 0 0112 0v2" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="doc-info">
+            <h4>Dr. Assi Bertille</h4>
+            <p class="doc-spec">Pédiatre de garde</p>
+            <p class="doc-exp" style="color:#DC2626">En service — 24h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+              <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="logo-name" style="color:#fff">Hôpital Central Ivoire</span>
+            <span class="logo-tag" style="color:rgba(255,255,255,0.5)">Centre Hospitalier de Référence</span>
+          </div>
+        </div>
+        <p class="footer-desc">Urgences 24h/24 — 7j/7.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Urgences</h5>
+        <ul>
+          <li style="color:#EF4444;font-weight:500">+225 27 21 00 00 01</li>
+          <li>Ouvert 24h/24</li>
+          <li>7 jours sur 7</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="rendez-vous.html">Rendez-vous</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Standard</h5>
+        <ul>
+          <li>📞 +225 27 21 00 00 00</li>
+          <li>✉️ contact@hci-abidjan.ci</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Hôpital Central Ivoire. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

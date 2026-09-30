@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hôpital Central Ivoire — Excellence Médicale</title>
+  <meta name="description" content="Hôpital Central Ivoire — Centre hospitalier de référence à Abidjan. Soins d'excellence, équipe médicale spécialisée, technologies de pointe." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+            <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Hôpital Central Ivoire</span>
+          <span class="logo-tag">Centre Hospitalier de Référence</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="pages/services.html">Services</a></li>
+        <li><a href="pages/medecins.html">Équipe</a></li>
+        <li><a href="pages/urgences.html">Urgences</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+      </ul>
+      <a href="pages/rendez-vous.html" class="btn-rdv">Prendre RDV</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Centre accrédité — Abidjan, Côte d'Ivoire
+      </div>
+      <h1 class="hero-title">
+        L'Excellence Médicale<br/>
+        <em>au Service de Votre Vie</em>
+      </h1>
+      <p class="hero-subtitle">
+        Plus de 30 spécialités médicales, une équipe de 200 professionnels de santé 
+        et des technologies de pointe pour vous offrir des soins d'exception.
+      </p>
+      <div class="hero-actions">
+        <a href="pages/rendez-vous.html" class="btn-primary">
+          Prendre rendez-vous
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+        <a href="pages/services.html" class="btn-ghost">Nos spécialités</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">200+</span>
+          <span class="stat-label">Médecins spécialistes</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">30+</span>
+          <span class="stat-label">Spécialités médicales</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">24h</span>
+          <span class="stat-label">Service d'urgences</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">15k+</span>
+          <span class="stat-label">Patients annuels</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-main">
+        <div class="hcard-header">
+          <div class="pulse-ring">
+            <div class="pulse-dot"></div>
+          </div>
+          <span>Urgences disponibles</span>
+        </div>
+        <div class="hcard-body">
+          <div class="ecg-line">
+            <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 30 L30 30 L40 10 L50 50 L60 5 L70 55 L80 30 L120 30 L130 15 L140 45 L150 30 L200 30" 
+                stroke="#5BA4D4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="hcard-info">Temps d'attente moyen</p>
+          <p class="hcard-value">12 <span>min</span></p>
+        </div>
+      </div>
+      <div class="hero-card-secondary card-float-1">
+        <div class="mini-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#0A3A6B" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <p class="mini-label">Plateau technique</p>
+          <p class="mini-val">IRM · Scanner · Bloc</p>
+        </div>
+      </div>
+      <div class="hero-card-secondary card-float-2">
+        <div class="mini-icon mini-green">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#0A3A6B" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#0A3A6B" stroke-width="1.5"/></svg>
+        </div>
+        <div>
+          <p class="mini-label">Qualité certifiée</p>
+          <p class="mini-val">Norme ISO 9001</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- URGENCES BANNER -->
+  <div class="urgences-banner">
+    <div class="urg-inner">
+      <div class="urg-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <p><strong>Urgences 24h/24 — 7j/7</strong> &nbsp;·&nbsp; Appel gratuit : <strong>+225 27 21 00 00 00</strong> &nbsp;·&nbsp; Quartier Plateau, Abidjan</p>
+      <a href="pages/urgences.html" class="urg-link">Accès urgences →</a>
+    </div>
+  </div>
+
+  <!-- SERVICES SECTION -->
+  <section class="section services-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Nos spécialités</p>
+        <h2 class="section-title">Un soin adapté<br/><em>à chaque besoin</em></h2>
+        <p class="section-desc">De la médecine générale à la chirurgie complexe, notre équipe couvre l'ensemble du spectre médical avec la même exigence de qualité.</p>
+      </div>
+      <div class="services-grid">
+        <a href="pages/services.html" class="service-card service-card--featured">
+          <div class="sc-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Cardiologie</h3>
+          <p>Diagnostic et traitement des maladies cardiovasculaires. Consultation, Holter, épreuve d'effort, cathétérisme.</p>
+          <span class="sc-arrow">→</span>
+        </a>
+        <a href="pages/services.html" class="service-card">
+          <div class="sc-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M6 20v-2a6 6 0 0112 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Pédiatrie</h3>
+          <p>Suivi complet de l'enfant de la naissance à l'adolescence. Urgences pédiatriques disponibles 24h/24.</p>
+          <span class="sc-arrow">→</span>
+        </a>
+        <a href="pages/services.html" class="service-card">
+          <div class="sc-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Neurologie</h3>
+          <p>Prise en charge des pathologies du système nerveux. EEG, IRM cérébrale, consultations spécialisées.</p>
+          <span class="sc-arrow">→</span>
+        </a>
+        <a href="pages/services.html" class="service-card">
+          <div class="sc-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.54 0 2.99.39 4.25 1.07" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Oncologie</h3>
+          <p>Centre de lutte contre le cancer avec chimiothérapie, radiothérapie et accompagnement psychologique.</p>
+          <span class="sc-arrow">→</span>
+        </a>
+        <a href="pages/services.html" class="service-card">
+          <div class="sc-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 9h6M9 12h6M9 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Chirurgie Générale</h3>
+          <p>Interventions laparoscopiques et ouvertes. Blocs opératoires de haute technologie, anesthésie de qualité.</p>
+          <span class="sc-arrow">→</span>
+        </a>
+        <a href="pages/services.html" class="service-card service-card--more">
+          <p>30+ spécialités disponibles</p>
+          <h3>Voir toutes<br/>nos spécialités</h3>
+          <span class="sc-arrow-big">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POURQUOI NOUS -->
+  <section class="section why-section">
+    <div class="container why-inner">
+      <div class="why-left">
+        <p class="section-label">Pourquoi nous choisir</p>
+        <h2 class="section-title">Une médecine de<br/><em>référence en Afrique</em></h2>
+        <p class="why-text">L'Hôpital Central Ivoire est le fruit d'une vision : offrir à Abidjan et à toute la Côte d'Ivoire une médecine digne des plus grands centres hospitaliers mondiaux, ancrée dans les réalités africaines.</p>
+        <div class="why-features">
+          <div class="why-feat">
+            <div class="wf-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+            <div><strong>Équipements de pointe</strong><p>IRM 3 Tesla, scanner 128 coupes, robot chirurgical Da Vinci</p></div>
+          </div>
+          <div class="why-feat">
+            <div class="wf-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div><strong>Médecins formés à l'international</strong><p>Notre équipe a été formée dans les meilleures universités d'Europe et d'Amérique du Nord</p></div>
+          </div>
+          <div class="why-feat">
+            <div class="wf-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.5"/><polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="1.5"/></svg></div>
+            <div><strong>Hospitalisation confort</strong><p>Chambres individuelles et suites médicales, accueil et restauration soignés</p></div>
+          </div>
+          <div class="why-feat">
+            <div class="wf-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 7h6M9 11h6M9 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div><strong>Dossier médical numérique</strong><p>Accès sécurisé à vos résultats et historique médical en ligne</p></div>
+          </div>
+        </div>
+        <a href="pages/contact.html" class="btn-primary">En savoir plus sur l'hôpital →</a>
+      </div>
+      <div class="why-right">
+        <div class="why-visual">
+          <div class="why-img-placeholder">
+            <div class="wip-inner">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="32" fill="#EBF3FA"/><path d="M32 16v32M16 32h32" stroke="#0A3A6B" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="32" r="12" fill="none" stroke="#5BA4D4" stroke-width="2"/></svg>
+              <p>Hôpital Central Ivoire</p>
+              <span>Photo à intégrer</span>
+            </div>
+          </div>
+          <div class="why-badge-float">
+            <strong>15 000+</strong>
+            <span>Patients soignés chaque année</span>
+          </div>
+          <div class="why-badge-float-2">
+            <strong>Fondé en 2005</strong>
+            <span>20 ans d'excellence</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉDECINS SECTION -->
+  <section class="section doctors-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Notre équipe</p>
+        <h2 class="section-title">Des médecins<br/><em>à votre écoute</em></h2>
+      </div>
+      <div class="doctors-grid">
+        <div class="doctor-card">
+          <div class="doc-avatar" style="background: #EBF3FA;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#0A3A6B" stroke-width="1.5"/><path d="M6 20v-2a6 6 0 0112 0v2" stroke="#0A3A6B" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="doc-info">
+            <h4>Pr. Kouassi Jean-Pierre</h4>
+            <p class="doc-spec">Cardiologie</p>
+            <p class="doc-exp">22 ans d'expérience</p>
+          </div>
+          <a href="pages/medecins.html" class="doc-link">Profil →</a>
+        </div>
+        <div class="doctor-card">
+          <div class="doc-avatar" style="background: #F0F7EE;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#1A6B3A" stroke-width="1.5"/><path d="M6 20v-2a6 6 0 0112 0v2" stroke="#1A6B3A" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="doc-info">
+            <h4>Dr. Aminata Coulibaly</h4>
+            <p class="doc-spec">Pédiatrie</p>
+            <p class="doc-exp">15 ans d'expérience</p>
+          </div>
+          <a href="pages/medecins.html" class="doc-link">Profil →</a>
+        </div>
+        <div class="doctor-card">
+          <div class="doc-avatar" style="background: #FEF6E4;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#7A4F0A" stroke-width="1.5"/><path d="M6 20v-2a6 6 0 0112 0v2" stroke="#7A4F0A" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="doc-info">
+            <h4>Dr. Thierry N'Goran</h4>
+            <p class="doc-spec">Neurologie</p>
+            <p class="doc-exp">18 ans d'expérience</p>
+          </div>
+          <a href="pages/medecins.html" class="doc-link">Profil →</a>
+        </div>
+        <div class="doctor-card">
+          <div class="doc-avatar" style="background: #F5EBF5;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#5A2D82" stroke-width="1.5"/><path d="M6 20v-2a6 6 0 0112 0v2" stroke="#5A2D82" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="doc-info">
+            <h4>Pr. Marie-Claire Bédié</h4>
+            <p class="doc-spec">Oncologie</p>
+            <p class="doc-exp">25 ans d'expérience</p>
+          </div>
+          <a href="pages/medecins.html" class="doc-link">Profil →</a>
+        </div>
+      </div>
+      <div class="see-all-wrap">
+        <a href="pages/medecins.html" class="btn-outline">Voir toute l'équipe médicale →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Témoignages</p>
+        <h2 class="section-title">Ce que disent<br/><em>nos patients</em></h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Une prise en charge exceptionnelle. Du personnel à l'écoute, des médecins compétents et des installations modernes. Je recommande l'HCI sans réserve."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">KD</div>
+            <div><strong>Konan Désiré</strong><p>Abidjan, Cocody</p></div>
+          </div>
+        </div>
+        <div class="testi-card testi-card--accent">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Mon enfant a été opéré en urgence ici. L'équipe pédiatrique a été formidable — professionnelle, rapide et rassurante pour toute notre famille."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AO</div>
+            <div><strong>Adjoua Odette</strong><p>Abidjan, Marcory</p></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Les équipements sont au niveau des hôpitaux européens. Plus besoin de voyager à l'étranger pour des examens spécialisés. Bravo à toute l'équipe."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">BT</div>
+            <div><strong>Bamba Tiémoko</strong><p>Abidjan, Plateau</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA RDV -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <p class="section-label light">Consultation</p>
+        <h2>Prenez rendez-vous<br/><em>dès aujourd'hui</em></h2>
+        <p>Nos équipes vous accueillent 6 jours sur 7. Urgences disponibles 24h/24.</p>
+        <div class="cta-actions">
+          <a href="pages/rendez-vous.html" class="btn-white">Réserver en ligne →</a>
+          <a href="tel:+2252721000000" class="btn-ghost-white">+225 27 21 00 00 00</a>
+        </div>
+      </div>
+      <div class="cta-visual">
+        <div class="cta-card">
+          <p class="cta-card-title">Prochain créneau disponible</p>
+          <div class="cta-slots">
+            <div class="slot slot--active">Demain<br/><strong>08h30</strong></div>
+            <div class="slot">Demain<br/><strong>10h00</strong></div>
+            <div class="slot">Mer.<br/><strong>09h15</strong></div>
+          </div>
+          <a href="pages/rendez-vous.html" class="btn-primary" style="width:100%;text-align:center;margin-top:1rem;">Choisir ce créneau</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="6" fill="#0A3A6B"/>
+              <path d="M14 6v16M6 14h16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="14" cy="14" r="4" fill="none" stroke="#5BA4D4" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="logo-name" style="color:#fff;">Hôpital Central Ivoire</span>
+            <span class="logo-tag" style="color:rgba(255,255,255,0.5)">Centre Hospitalier de Référence</span>
+          </div>
+        </div>
+        <p class="footer-desc">Votre santé est notre priorité absolue. Nous vous offrons des soins d'excellence dans un environnement bienveillant et professionnel.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">in</a>
+          <a href="#" aria-label="LinkedIn">Li</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="pages/services.html">Cardiologie</a></li>
+          <li><a href="pages/services.html">Pédiatrie</a></li>
+          <li><a href="pages/services.html">Neurologie</a></li>
+          <li><a href="pages/services.html">Oncologie</a></li>
+          <li><a href="pages/services.html">Chirurgie</a></li>
+          <li><a href="pages/services.html">Voir tous →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Hôpital</h5>
+        <ul>
+          <li><a href="#">À propos</a></li>
+          <li><a href="pages/medecins.html">Notre équipe</a></li>
+          <li><a href="pages/urgences.html">Urgences</a></li>
+          <li><a href="pages/rendez-vous.html">Rendez-vous</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>📍 Quartier Plateau, Abidjan</li>
+          <li>📞 +225 27 21 00 00 00</li>
+          <li>✉️ contact@hci-abidjan.ci</li>
+          <li style="margin-top:1rem;"><strong style="color:#fff">Urgences :</strong></li>
+          <li style="color:#5BA4D4;font-weight:500;">+225 27 21 00 00 01</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Hôpital Central Ivoire. Tous droits réservés.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">Accessibilité</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
